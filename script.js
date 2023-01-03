@@ -1,7 +1,8 @@
 "use strict";
 
 let searchInput = document.querySelector(".search__country--input");
-const filterByRegion = document.getElementById("filter");
+const filterByRegion = document.querySelectorAll("#filter");
+// console.log(filterByRegion);
 const col = document.querySelector(".col-md");
 const row = document.querySelector(".cap");
 
@@ -81,6 +82,16 @@ searchInput.addEventListener("keyup", (e) => {
   // create a function to search the country object
   displayCountry(filteredCountry);
 });
+
+for (let i = 0; i < filterByRegion.length; i++) {
+  filterByRegion[i].addEventListener("click", function () {
+    const value = filterByRegion[i].textContent;
+    const filterCountryByRegion = resData.filter((country) => {
+      return country.region.includes(value);
+    });
+    displayCountry(filterCountryByRegion);
+  });
+}
 
 countryApi();
 

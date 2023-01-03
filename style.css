@@ -1,0 +1,7 @@
+#filter {
+  cursor: pointer;
+}
+.style1 {
+  background-color: rgba(175, 177, 175, 0.8);
+  padding: 0.7rem 1.2rem;
+}

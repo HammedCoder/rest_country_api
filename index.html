@@ -137,15 +137,27 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <form action="" method="post">
-              <select
-                name="filter"
-                id="select-filter"
-                class="px-2 rounded py-2 mb-2 mx-3"
+            <div class="dropdown">
+              <a
+                href="#"
+                class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
+                id="dropdownUser1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-                <option value="" id="filter">Filter by region</option>
-              </select>
-            </form>
+                <strong class="style1">Filter by Region</strong>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark text-small shadow"
+                aria-labelledby="dropdownUser1"
+              >
+                <li class="dropdown-item" id="filter">Europe</li>
+                <li class="dropdown-item" id="filter">Africa</li>
+                <li class="dropdown-item" id="filter">Americas</li>
+                <li class="dropdown-item" id="filter">Asia</li>
+                <li class="dropdown-item" id="filter">Oceania</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
