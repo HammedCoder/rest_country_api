@@ -2,12 +2,19 @@
 
 let searchInput = document.querySelector(".search__country--input");
 const filterByRegion = document.querySelectorAll("#filter");
+
+let countryInfo = document.querySelector(".view__country-info");
+let imFlag = document.querySelector(".img-flag");
+
 // console.log(filterByRegion);
 const col = document.querySelector(".col-md");
 const row = document.querySelector(".cap");
 
 let message;
 let resData = [];
+let objJson = [];
+let current_page = 1;
+const records_per_page = 6;
 
 if ("speechSynthesis" in window) {
   const msg = new SpeechSynthesisUtterance();
@@ -18,6 +25,8 @@ if ("speechSynthesis" in window) {
 }
 
 const displayCountry = (characters) => {
+  objJson = characters;
+  // console.log(objJson.length);
   const htmlString = characters
     .map((el) => {
       return `
@@ -30,7 +39,7 @@ const displayCountry = (characters) => {
   
           <img src="${el.flags.png}" alt="${
         el.name.common
-      }" class="img-fluid" title="${
+      }" class="img-fluid img-flag" title="${
         el.name.common
       } flag" style="height: 200px" />
 
@@ -41,18 +50,21 @@ const displayCountry = (characters) => {
             }</p>
             <p class="card-text">Capital City: ${el.capital}</p>
             <p class="card-text">Continent: ${el.region}</p>
+            <p class="card-text">Timezone: ${el.timezones}</p>
             <p class="card-text"> Population: ${el.population.toLocaleString()}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <a href="${
+                  el.capital
+                }" class="btn btn-sm btn-outline-secondary view__country-info">View</a>
+                
               </div>
               <small class="text-muted">9 mins</small>
             </div>
           </div>
         </div>
       </div>`;
-    })
+    }, "<p>objJson.length</p>")
     .join("");
   row.innerHTML = htmlString;
 };
@@ -93,7 +105,11 @@ for (let i = 0; i < filterByRegion.length; i++) {
   });
 }
 
+// Pagination mechanism
+
 countryApi();
+
+// countryInfo.addEventListener("click", function () {});
 
 // const displayCountry = (country) => {
 //   country.forEach((el) => {

@@ -4,4 +4,11 @@
 .style1 {
   background-color: rgba(175, 177, 175, 0.8);
   padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+}
+
+.view__country-info {
+  font-weight: 500;
+  /* color: brown; */
+  /* background-color: black; */
 }
